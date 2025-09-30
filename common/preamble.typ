@@ -1,51 +1,9 @@
 #import "requirements.typ": *
 #import "metadata.typ": *
+#import "commands.typ": *
 
 #let dState = state("darkmode", false)
 #let handout = sys.inputs.keys().any(k => k == "handout") and sys.inputs.at("handout") == "true"
-#let slimsf(body) = text(
-  font: "Roboto",
-  fallback: false,
-  weight: "light",
-  body,
-)
-#let textsf(body) = text(
-  font: "Roboto",
-  fallback: false,
-  weight: "regular",
-  body,
-)
-
-#let fatsf(body) = text(
-  font: "Roboto",
-  fallback: false,
-  weight: "bold",
-  body,
-)
-
-#let emojifont(body) = text(
-  font: "Noto Color Emoji",
-  fallback: false,
-  weight: "regular",
-  body,
-)
-
-#let accent-color = rgb(tuda_colors.at("3b")) // TU Darmstadt Teal
-
-// counter for definitions
-#let definition_counter = counter("definition")
-
-#let definition(..args) = context clue(
-  title: {
-    definition_counter.step()
-    fatsf[Definition #context definition_counter.display()]
-  },
-  accent-color: accent-color,
-  header-color: accent-color.transparentize(if dState.get() { 60% } else { 80% }),
-  border-color: accent-color.transparentize(80%),
-  icon: emojifont(emoji.pencil),
-  ..args,
-)
 
 #let init(doc, darkmode: false) = {
   if (sys.inputs.keys().any(k => k == "darkmode")) {
@@ -61,15 +19,15 @@
     fill: if darkmode { rgb("162b3a") } else { black.transparentize(90%) },
     // stroke: 1pt + black,
     stroke: none,
-    header: [Testfälle],
+    header: none,
     header-cell-args: (align: center, fill: accent-color),
     header-transform: x => {
       set text(fill: white)
-      fa-code(solid: true)
+      text(size: 11pt, fa-code(solid: true))
       h(1fr)
       textsf(x)
       h(1fr)
-      fa-code(solid: true)
+      text(size: 11pt, fill: accent-color, fa-code(solid: true))
     },
     // inset: (x: 3pt),
     zebra-fill: none,
@@ -81,8 +39,19 @@
         color: orange,
         icon: fa-java(),
       ),
+      typst: (
+        name: [ Typst],
+        color: rgb("#191c1a"),
+        icon: box(baseline: .15em, radius: 3pt, clip: true, width: 1em, height: 1em, image(
+          "../pictures/typst-favicon.png",
+          width: 1em,
+          height: 1em,
+          fit: "contain",
+        )),
+      ),
     ),
-    lang-outset: (x: 0pt, y: 20pt),
+    // lang-outset: (x: 0pt, y: 30pt),
+    // lang-outset: (x: -30pt, y: 0pt),
     lang-format: (lang, icon, color) => {
       box(
         fill: color.transparentize(if darkmode { 50% } else { 80% }),

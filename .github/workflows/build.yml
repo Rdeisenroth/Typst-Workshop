@@ -36,12 +36,13 @@ jobs:
         with:
           path: |
             /usr/share/fonts/truetype/fontawesome6
+            /usr/share/fonts/truetype/fontawesome7
             /usr/share/fonts/truetype/roboto
             /usr/share/fonts/truetype/xcharter
             /usr/share/fonts/truetype/noto-emoji
             /usr/share/fonts/truetype/gentium
             /usr/share/fonts/truetype/noto-serief
-          key: fonts-v1-${{ runner.os }}
+          key: fonts-v2-${{ runner.os }}
 
       # 2. install necessary fonts
       - name: Install fonts
@@ -51,6 +52,10 @@ jobs:
           unzip fontawesome6.zip
           mkdir -p /usr/share/fonts/truetype/fontawesome6
           cp fontawesome6/opentype/* /usr/share/fonts/truetype/fontawesome6/
+          wget https://mirrors.ctan.org/fonts/fontawesome7.zip
+          unzip fontawesome7.zip
+          mkdir -p /usr/share/fonts/truetype/fontawesome7
+          cp fontawesome7/opentype/* /usr/share/fonts/truetype/fontawesome7/
           wget https://mirrors.ctan.org/fonts/roboto.zip
           unzip roboto.zip
           mkdir -p /usr/share/fonts/truetype/roboto
@@ -100,8 +105,8 @@ jobs:
       # 4. Build the document
       - name: Typst
         run: |
-          typst compile --pdf-standard a-2b --input handout=true typst-workshop-slides.typ typst-workshop-slides.pdf
-          typst compile --pdf-standard a-2b --input handout=true --input darkmode=true typst-workshop-slides.typ typst-workshop-slides-dark.pdf
+          make
+          mv build/*.pdf .
 
       # 5. Upload artifacts to GitHub
       - name: Upload artifacts to GitHub

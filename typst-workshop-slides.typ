@@ -35,6 +35,16 @@
 = Typst basics
 == Syntax
 == Dokumentenstruktur
+=== Minimales Typst-Dokument
+#codeWithCompiledOutput("code/minimal.typ")
+=== Minimales Typst-Dokument mit größerem Text
+#codeWithCompiledOutput("code/minimal-large.typ")
+=== Minimales Typst-Dokument mit Blindtext
+#codeWithCompiledOutput("code/minimal-lipsum.typ")
+=== Minimales Typst-Dokument mit farbigem Blindtext I
+#codeWithCompiledOutput("code/minimal-lipsum-red.typ")
+=== Minimales Typst-Dokument mit farbigem Blindtext II
+#codeWithCompiledOutput("code/minimal-lipsum-rainbow.typ")
 == Kompilierung
 == Arbeiten mit Text
 == Titelei
