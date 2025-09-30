@@ -13,9 +13,9 @@
   text(fill: rgb("#239dad"), image("pictures/typst-logo-colored.svg", width: 10em))
   // v(-2em)
   // slimsf(
-    text(font: "Gentium",ipa.text(delim: "/")[
-      t a I p s t 
-    ])
+  text(font: "Gentium", ipa.text(delim: "/")[
+    t a I p s t
+  ])
   // )
   v(2em)
   [Typst ist eine Programmiersprache zur Erstellung von PDF-Dokumenten und Websites. Erstveröffentlicht 2023 von der #link("https://typst.app")[Typst GmbH], Sitz in Berlin.@typstAbout]
