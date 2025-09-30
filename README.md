@@ -1,8 +1,16 @@
 # Typst-Workshop
 
-[![build](https://github.com/Rdeisenroth/Typst-Workshop/actions/workflows/build.yml/badge.svg)](https://github.com/Rdeisenroth/Typst-Workshop/actions/workflows/build.yml)
-[![check](https://github.com/Rdeisenroth/Typst-Workshop/actions/workflows/check.yml/badge.svg)](https://github.com/Rdeisenroth/Typst-Workshop/actions/workflows/check.yml)
-[![Typst Badge](https://img.shields.io/badge/Typst-Presentation-blue)](https://typst.app/)
+<div align="center">
+  <a href="https://github.com/Rdeisenroth/Typst-Workshop/actions/workflows/build.yml">
+    <img src="https://github.com/Rdeisenroth/Typst-Workshop/actions/workflows/build.yml/badge.svg" alt="build" />
+  </a>
+  <a href="https://github.com/Rdeisenroth/Typst-Workshop/actions/workflows/check.yml">
+    <img src="https://github.com/Rdeisenroth/Typst-Workshop/actions/workflows/check.yml/badge.svg" alt="check" />
+  </a>
+  <a href="https://typst.app/">
+    <img src="https://img.shields.io/badge/Typst-Presentation-blue" alt="Typst Badge" />
+  </a>
+</div>
 
 Die Materialien unseres Typst-Workshops für die Fachschaft Informatik der TU Darmstadt, erstellt mit [Typst](https://typst.app/).
 
