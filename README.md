@@ -1,5 +1,3 @@
-# Typst-Workshop
-
 <div align="center">
   <a href="https://github.com/Rdeisenroth/Typst-Workshop/actions/workflows/build.yml">
     <img src="https://github.com/Rdeisenroth/Typst-Workshop/actions/workflows/build.yml/badge.svg" alt="build" />
@@ -11,6 +9,8 @@
     <img src="https://img.shields.io/badge/Typst-Presentation-blue" alt="Typst Badge" />
   </a>
 </div>
+
+# Typst-Workshop
 
 Die Materialien unseres Typst-Workshops für die Fachschaft Informatik der TU Darmstadt, erstellt mit [Typst](https://typst.app/).
 
