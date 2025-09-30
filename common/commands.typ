@@ -72,7 +72,7 @@
     text(size: 14pt, fa-code(solid: true))
   },
   frame: (
-    body-color: if dState.get() { rgb("#2D404E") } else { rgb("#D0D5D8") },
+    body-color: none,
     title-color: accent-color,
     body-inset: 0pt,
     thickness: 0pt,
@@ -83,7 +83,7 @@
   ),
   radius: 5pt,
   body-style: (
-    color: white,
+    color: if dState.get() { white } else { black },
   ),
   box(
     clip: true,
@@ -92,13 +92,16 @@
     radius: (top-left: 0pt, top-right: 0pt, bottom-left: 5pt, bottom-right: 5pt),
     grid(
       columns: (1fr * split * 2, 1fr),
-      gutter: .5em,
+      gutter: 0em,
       align: center + horizon,
       {
-        codly(header: none, radius: 0pt)
+        codly(header: none, radius: 0pt, lang-outset: (x: 0pt, y: 12pt))
         code
       },
-      eval("[" + code.text + "]"),
+      grid.cell(
+        fill: if dState.get() { rgb("#2D404E") } else { rgb("#D0D5D8") },
+        eval("[" + code.text + "]"),
+      ),
     ),
   ),
 )
