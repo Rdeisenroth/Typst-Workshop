@@ -1,11 +1,12 @@
 #set page(fill: black, margin: 5cm)
 #set text(
-  42pt,
-  fill: gradient.linear(
+  40pt,
+  font: "Arial",
+  fill: gradient.conic(
     ..color.map.rainbow,
   ),
 )
 #let zahl = 3 * (4 + 1)
-Es folgen #zahl Wörter Blindtext:
+Es folgen #zahl Wörter _Blindtext_:
 
 #lorem(zahl)
