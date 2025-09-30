@@ -22,6 +22,15 @@
 })
 == Idee hinter Typst
 == Anwendungsmöglichkeiten
+- Abschlussarbeiten (z.B. Thesis)#footnote[Wobei #LaTeX immernoch der De-facto-Standard ist]
+- Hausübungsabgaben
+- Zusammenfassungen
+- Präsentationen (wie diese)
+- Handouts
+- Wissenschaftliches Zeichnen (z.B. Schaltplan, Diagramme, Moleküle, $dots$)
+- Vektorgrafiken
+- Musik komponieren
+- $dots$
 == Questions
 #align(center + horizon, text(size: 34pt)[
   Thank you for your attention!\
@@ -29,6 +38,17 @@
 ])
 = Vor- und Nachteile von Typst
 == Allgemeine Vorteile
+- Einfache (nachträgliche) Änderung des Design
+- Automatisierung
+- Kompillierungsgeschwindigkeit
+- Fußnoten, Referenzen, Formatierung, $dots$ sind einfach zu managen
+- Formeln zu tippen ist intuitiv und einfach
+- Stabil auch bei sehr großen Dokumenten
+- Plattformunabhängig
+  - Linux: TeXLive
+  - Windows: TexLive oder MikTex
+  - MacOS: TeXLive
+- Viele nützliche Pakete, die einem das Leben einfach machen
 == Allgemeine Nachteile
 == Typst vs. LaTeX
 == Typst vs. Office
