@@ -10,14 +10,17 @@ compileCode:
 	@echo "Compiling code"
 	$(MAKE) -C code
 
-$(FILES):
+$(FILES:.typ=.pdf): %.pdf: %.typ
 	@mkdir -p $(OUT_DIR)
 	@echo "Compiling $< regular"
 	@typst compile --pdf-standard a-2b --input handout=true $< $(OUT_DIR)/$(<:%.typ=%.pdf)
+
+$(FILES:.typ=-dark.pdf): %-dark.pdf: %.typ
+	@mkdir -p $(OUT_DIR)
 	@echo "Compiling $< dark mode"
 	@typst compile --pdf-standard a-2b --input handout=true --input darkmode=true $< $(OUT_DIR)/$(<:%.typ=%-dark.pdf)
 
-compile: $(FILES)
+compile: $(FILES:.typ=.pdf) $(FILES:.typ=-dark.pdf)
 	@echo -e "\e[1;42mAll Done. PDFs can be found in \"$(OUT_DIR)\"\e[0m"
 
 cleanBuild:
