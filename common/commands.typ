@@ -93,14 +93,20 @@
     grid(
       columns: (1fr * split * 2, 1fr),
       gutter: 0em,
-      align: center + horizon,
-      {
-        codly(header: none, radius: 0pt, lang-outset: (x: 0pt, y: 12pt))
-        code
-      },
+      align: left + horizon,
       grid.cell(
+        fill: if dState.get() { rgb("162b3a") } else { black.transparentize(90%) },
+        {
+          codly(header: none, radius: 0pt, lang-outset: (x: 0pt, y: 12pt))
+          code
+        },
+      ),
+      grid.cell(
+        inset: (x: 1em, y: 1em),
         fill: if dState.get() { rgb("#2D404E") } else { rgb("#D0D5D8") },
-        eval("[" + code.text + "]"),
+        {
+          eval("[" + code.text + "]")
+        },
       ),
     ),
   ),

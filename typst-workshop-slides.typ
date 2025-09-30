@@ -34,6 +34,19 @@
 == Typst vs. Office
 = Typst basics
 == Syntax
+=== Allgemein
+- Zeichen mit besonderer Bedeutung: `#`, `{`, `}`, `[`, `]`, `(`, `)`, `\`, `/`, `$`, `_`, `^`, `&`, `~`, #raw("`"), #raw("´"), `"`, `'`
+- Befehle: `befehl(argument1, argument2, ...)`, im Textmodus mit vorangestelltem `#`
+- Kommentare: `//` bis Zeilenende, `/* ... */` für Blockkommentare
+- Argumente werden in runden Klammern `()` angegeben
+- Content-Blöcke werden mit Eckigen Klammern `[]` angegeben
+- Scope-Blöcke werden mit geschweiften Klammern `{}` angegeben
+- Strings werden in Anführungszeichen `""` angegeben
+- Code-Blöcke werden mit drei Backticks #raw("```") vor und nach dem Code angegeben (wie in Markdown)
+#pagebreak()
+=== Textmodus
+#pagebreak()
+=== Befehlsmodus
 == Dokumentenstruktur
 === Minimales Typst-Dokument
 #codeWithCompiledOutput("code/minimal.typ")
@@ -48,14 +61,19 @@
 == Kompilierung
 == Arbeiten mit Text
 
-#codeAndOutput(
-  title: "Zeilenumbrüche",
-  ```typst
-  #let lob = 10
-  #let hib = 100
-  die summe von #lob bis #hib ist #range(lob,hib+1).sum()
-  ```,
-)
+#{
+  set par(first-line-indent: 1em)
+  codeAndOutput(
+    title: "Zeilenumbrüche",
+    ```typst
+    Das ist ein Zeilen-\ umbruch. Er beginnt eine neue Zeile.
+
+    Das ist ein Zeilen-#linebreak(justify:true)umbruch. Er beginnt eine neue Zeile.
+
+    Und hier beginnt ein neuer Absatz.
+    ```,
+  )
+}
 == Titelei
 == Installation und Nutzung
 = Mathematische Formeln
