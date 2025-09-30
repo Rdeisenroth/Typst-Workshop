@@ -2,13 +2,20 @@
 
 [![build](https://github.com/Rdeisenroth/Typst-Workshop/actions/workflows/build.yml/badge.svg)](https://github.com/Rdeisenroth/Typst-Workshop/actions/workflows/build.yml)
 [![check](https://github.com/Rdeisenroth/Typst-Workshop/actions/workflows/check.yml/badge.svg)](https://github.com/Rdeisenroth/Typst-Workshop/actions/workflows/check.yml)
-[![Typst Badge](https://img.shields.io/badge/Typst-Summary-blue)](https://typst.app/)
+[![Typst Badge](https://img.shields.io/badge/Typst-Presentation-blue)](https://typst.app/)
 
 Die Materialien unseres Typst-Workshops für die Fachschaft Informatik der TU Darmstadt, erstellt mit [Typst](https://typst.app/).
 
-<!-- TODO: Add actual share links -->
-Die neueste Version der Materialien kann von [hier](https://nextcloud.dnroth.de/public.php/dav/files/DzKxSDeHYmGeJaf/) heruntergeladen werden.
-Eine Dark-Mode-Version ist [hier](https://nextcloud.dnroth.de/public.php/dav/files/ogebBQnKy58iwSQ/) verfügbar.
+You can download the latest version of the materials here:
+<p align="center">
+  <a href="https://nextcloud.dnroth.de/public.php/dav/files/DzKxSDeHYmGeJaf/" style="text-decoration:none;">
+    <img src="https://img.shields.io/badge/Download-Light%20Mode-blue?style=for-the-badge" alt="Download Light Mode" />
+  </a>
+  <a href="https://nextcloud.dnroth.de/public.php/dav/files/ogebBQnKy58iwSQ/" style="text-decoration:none; margin-left: 10px;">
+    <img src="https://img.shields.io/badge/Download-Dark%20Mode-black?style=for-the-badge" alt="Download Dark Mode" />
+  </a>
+</p>
+
 ## Authoren
 - [Ruben Deisenroth](https://github.com/Rdeisenroth)
 - [Andreas Brodner](https://github.com/FussballAndy)
