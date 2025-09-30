@@ -7,8 +7,8 @@
 Die Materialien unseres Typst-Workshops für die Fachschaft Informatik der TU Darmstadt, erstellt mit [Typst](https://typst.app/).
 
 <!-- TODO: Add actual share links -->
-Die neueste Version der Materialien kann von [hier](https://nextcloud.dnroth.de/public.php/dav/files/todo) heruntergeladen werden.
-Eine Dark-Mode-Version ist [hier](https://nextcloud.dnroth.de/public.php/dav/files/todo) verfügbar.
+Die neueste Version der Materialien kann von [hier](https://nextcloud.dnroth.de/public.php/dav/files/DzKxSDeHYmGeJaf/) heruntergeladen werden.
+Eine Dark-Mode-Version ist [hier](https://nextcloud.dnroth.de/public.php/dav/files/ogebBQnKy58iwSQ/) verfügbar.
 ## Authoren
 - [Ruben Deisenroth](https://github.com/Rdeisenroth)
 - [Andreas Brodner](https://github.com/FussballAndy)
