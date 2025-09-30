@@ -122,7 +122,7 @@
       department: [FB 20 -- Computer Science],
       institute: [Technische Universität Darmstadt],
       // logo: text(fallback: true, size: 0.75in, emoji.cat.face),
-      logo: image("../logos/tuda_logo.svg", height: 100%),
+      logo: image(if darkmode { "../logos/tuda_logo-dark.svg" } else { "../logos/tuda_logo.svg" }, height: 100%),
     ),
     config-common(
       show-notes-on-second-screen: if handout { none } else { right },
