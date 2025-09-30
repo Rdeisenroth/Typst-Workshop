@@ -40,7 +40,7 @@
         icon: fa-java(),
       ),
       typst: (
-        name: [ Typst],
+        name: text(fill: white)[ Typst],
         color: rgb("#191c1a"),
         icon: box(baseline: .15em, radius: 3pt, clip: true, width: 1em, height: 1em, image(
           "../pictures/typst-favicon.png",
