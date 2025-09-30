@@ -1,4 +1,5 @@
 #import "requirements.typ": *
+#import "styling.typ": *
 #let slimsf(body) = text(
   font: "Roboto",
   fallback: false,
@@ -60,3 +61,44 @@
     ],
   )
 }
+
+#let codeAndOutput(code, title: none, split: 70%) = context showybox(
+  fill: gray,
+  title: if title == none { none } else {
+    text(size: 14pt, fa-code(solid: true))
+    h(1fr)
+    textsf(title)
+    h(1fr)
+    text(size: 14pt, fa-code(solid: true))
+  },
+  frame: (
+    body-color: if dState.get() { rgb("#2D404E") } else { rgb("#D0D5D8") },
+    title-color: accent-color,
+    body-inset: 0pt,
+    thickness: 0pt,
+  ),
+  title-style: (
+    color: white,
+    sep-thickness: 0pt,
+  ),
+  radius: 5pt,
+  body-style: (
+    color: white,
+  ),
+  box(
+    clip: true,
+    inset: 0pt,
+    outset: 0pt,
+    radius: (top-left: 0pt, top-right: 0pt, bottom-left: 5pt, bottom-right: 5pt),
+    grid(
+      columns: (1fr * split * 2, 1fr),
+      gutter: .5em,
+      align: center + horizon,
+      {
+        codly(header: none, radius: 0pt)
+        code
+      },
+      eval("[" + code.text + "]"),
+    ),
+  ),
+)

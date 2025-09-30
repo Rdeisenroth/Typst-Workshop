@@ -47,6 +47,15 @@
 #codeWithCompiledOutput("code/minimal-lipsum-rainbow.typ")
 == Kompilierung
 == Arbeiten mit Text
+
+#codeAndOutput(
+  title: "Zeilenumbrüche",
+  ```typst
+  #let lob = 10
+  #let hib = 100
+  die summe von #lob bis #hib ist #range(lob,hib+1).sum()
+  ```,
+)
 == Titelei
 == Installation und Nutzung
 = Mathematische Formeln

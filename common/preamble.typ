@@ -1,8 +1,8 @@
 #import "requirements.typ": *
 #import "metadata.typ": *
 #import "commands.typ": *
+#import "styling.typ": *
 
-#let dState = state("darkmode", false)
 #let handout = sys.inputs.keys().any(k => k == "handout") and sys.inputs.at("handout") == "true"
 
 #let init(doc, darkmode: false) = {
