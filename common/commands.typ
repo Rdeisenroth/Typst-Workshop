@@ -133,3 +133,76 @@
     ),
   ),
 )
+
+#let goodqrcode(
+  content,
+  width: auto,
+  height: auto,
+  color: auto,
+  background: auto,
+  error-correction: "M",
+) = qr-code(
+  content,
+  width: width,
+  height: height,
+  color: if color == auto { fgcolor() } else { color },
+  background: if background == auto { rgb("#00000000") } else { background },
+  error-correction: error-correction,
+)
+
+#let urlfigure(content, caption: none) = {
+  let res = ()
+  if (caption != none) {
+    res.push(caption)
+  }
+  res.push(link(content))
+  figure(
+    goodqrcode(content),
+    caption: res.join[\ ],
+  )
+}
+
+#let urlslide(
+  content,
+  caption: none,
+) = {
+  v(1fr)
+  urlfigure(content, caption: caption)
+  v(1fr)
+}
+
+#let urlslide2(
+  content1,
+  content2,
+  caption1: none,
+  caption2: none,
+) = {
+  v(1fr)
+  grid(
+    columns: (1fr, 1fr),
+    gutter: 1em,
+    align: center + horizon,
+    urlfigure(content1, caption: caption1), urlfigure(content2, caption: caption2),
+  )
+  v(1fr)
+}
+
+#let urlslide3(
+  content1,
+  content2,
+  content3,
+  caption1: none,
+  caption2: none,
+  caption3: none,
+) = {
+  v(1fr)
+  grid(
+    columns: (1fr, 1fr, 1fr),
+    gutter: 1em,
+    align: center + horizon,
+    urlfigure(content1, caption: caption1),
+    urlfigure(content2, caption: caption2),
+    urlfigure(content3, caption: caption3),
+  )
+  v(1fr)
+}

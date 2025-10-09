@@ -4,7 +4,6 @@
 #import "styling.typ": *
 
 #let handout = sys.inputs.keys().any(k => k == "handout") and sys.inputs.at("handout") == "true"
-
 #let init(doc, darkmode: false) = {
   if (sys.inputs.keys().any(k => k == "darkmode")) {
     let newDState = sys.inputs.at("darkmode") == "true"
@@ -172,6 +171,10 @@
     body-indent: 3mm,
     indent: 3mm,
   )
+
+  show figure.caption: it => context [
+    #text(accent-color)[#it.supplement~#it.counter.display()#it.separator]#it.body
+  ]
 
   set enum(spacing: 1em, numbering: "1.", indent: 5pt)
 

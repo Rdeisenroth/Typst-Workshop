@@ -166,12 +166,70 @@
 === Minimales Typst-Dokument mit farbigem Blindtext II
 #codeWithCompiledOutput("code/minimal-lipsum-rainbow.typ")
 == Kompilierung
+//  \begin{figure}
+//             \centering
+//             % three nodes: source -> compile -> output
+//             \tikzset{
+//                 graphnode/.style={draw, rectangle, rounded corners, minimum width=2cm, minimum height=1cm, text width=2cm, align=center, fill=#1,font=\color{white}},
+//             }
+//             \begin{tikzpicture}[start chain=1 going right, every on chain/.style={join=by -Latex}, thick]
+//                 \node<1->[graphnode=TUDa-1b, on chain=1] (source) {Quelldatei};
+//                 \node<3->[graphnode=TUDa-8b, on chain=1] (compile) {Kompilieren};
+//                 \node<5->[graphnode=TUDa-3b, on chain=1] (output) {Ausgabe};
+
+//                 \node<2->[above=0cm of source]{*.tex};
+//                 \node<4->[above=0cm of compile]{latexmk <datei.tex>};
+//                 \node<6->[above=0cm of output]{*.pdf/*.dvi/*.ps};
+//             \end{tikzpicture}
+//             \caption{Kompilieren mit \LaTeX{}}
+//         \end{figure}
+//
+#v(1fr)
+#context {
+  let palette = (
+    rgb(tuda_colors.at("1b")),
+    rgb(tuda_colors.at("8b")),
+    rgb(tuda_colors.at("3b")),
+  )
+  let graphnode(pos, label, tint: yellow, ..args) = node(
+    pos,
+    align(center, text(white, label)),
+    width: 4.5cm,
+    height: 2cm,
+    fill: tint,
+    stroke: 2pt + tint.darken(50% * (if isDarkMode() { -1 } else { 1 })),
+    corner-radius: 10pt,
+    ..args,
+  )
+  figure(
+    diagram(
+      edge-stroke: fgcolor() + 2pt,
+      graphnode((0, 0), tint: palette.at(0), [Quelldatei]),
+      // pause,
+      node((0, -.55), align(center, [`*.typ`])),
+      edge((0, 0), (1, 0), "-latex"),
+      graphnode((1, 0), tint: palette.at(1), [Kompillieren]),
+      node((1, -.55), align(center, [#raw(lang: "bash", "typst compile <datei.typ>")])),
+      edge((1, 0), (2, 0), "-latex"),
+      graphnode((2, 0), tint: palette.at(2), [Ausgabe]),
+      node((2, -.55), align(center, [`*.pdf`])),
+    ),
+    caption: [Kompilierung mit Typst],
+  )
+}
+#pause
+- in der Praxis gibt es verschiedene Wege, Typst zu kompillieren:
+  - Online Editor auf #link("https://typst.app")[typst.app]
+  - Preview-Modus in #link("https://code.visualstudio.com/")[VS Code] mit der #link("https://marketplace.visualstudio.com/items?itemName=myriad-dreamin.tinymist")[TinyMist Extension]
+  // - Kommandozeile mit #raw(lang: "bash", "typst compile <datei.typ>")
+  - ...
+#v(1fr)
 == Arbeiten mit Text
 
 #{
   set par(first-line-indent: 1em)
   codeAndOutput(
-    title: "Zeilenumbrüche",
+    title: "Zeilenumbrüche I",
     ```typst
     Das ist ein Zeilen-\ umbruch. Er beginnt eine neue Zeile.
 
@@ -181,14 +239,249 @@
     ```,
   )
 }
-== Titelei
+#pagebreak()
+#{
+  set par(first-line-indent: 1em)
+  codeAndOutput(
+    title: "Zeilenumbrüche II",
+    ```typst
+    #set par(first-line-indent: 0em)
+    Das ist ein Zeilen-\ umbruch. Er beginnt eine neue Zeile.
+
+    Das ist ein Zeilen-#linebreak(justify:true)umbruch. Er beginnt eine neue Zeile.
+
+    Und hier beginnt ein neuer Absatz.
+    ```,
+  )
+}
+#pagebreak()
+#{
+  set text(lang: "en")
+  codeAndOutput(
+    title: "Trennhilfen I",
+    ```typst
+    // keine Silbentrennung
+    Das längste Deutsche Wort lautet nunmal Rindfleischetikettierungsüberwachungsaufgabenübertragungsgesetz.
+
+    // automatische Silbentrennung? Nicht ganz...
+    #set text(hyphenate: false)
+    Das längste Deutsche Wort lautet nunmal Rindfleischetikettierungsüberwachungsaufgabenübertragungsgesetz.
+    ```,
+  )
+}
+#pagebreak()
+#{
+  codeAndOutput(
+    title: "Trennhilfen II",
+    ```typst
+    // automatische Silbentrennung, so aber
+    #set text(lang: "de", hyphenate: true)
+    Das längste Deutsche Wort lautet nunmal Rindfleischetikettierungsüberwachungsaufgabenübertragungsgesetz.
+
+    // manuelle Silbentrennung
+    #set text(lang: "de", hyphenate: false)
+    Das längste Deutsche Wort lautet nunmal Rind-?fleischetikettierungs-?überwachungsaufgaben-?übertragungsgesetz.
+    ```,
+  )
+}
+#pagebreak()
+#{
+  codeAndOutput(
+    title: "Trennhilfen III",
+    ```typst
+    #set par(justify: true) // bis ans Ende
+    // automatische Silbentrennung
+    #set text(lang: "de", hyphenate: true)
+    Das längste Deutsche Wort lautet nunmal Rindfleischetikettierungsüberwachungsaufgabenübertragungsgesetz.
+
+    // manuelle Silbentrennung
+    #set text(lang: "de", hyphenate: false)
+    Das längste Deutsche Wort lautet nunmal Rind-?fleischetikettierungs-?überwachungsaufgaben-?übertragungsgesetz.
+    ```,
+  )
+}
+#pagebreak()
+#{
+  codeAndOutput(
+    title: "Geschützte Leerzeichen",
+    ```typst
+    Ich möchte dass diese tollen
+    "zwei Wörter"
+    nicht getrennt werden.
+
+    Ich möchte dass diese tollen
+    "zwei~Wörter"
+    nicht getrennt werden.
+    ```,
+  )
+}
+#pagebreak()
+#{
+  codeAndOutput(
+    title: "Textarten I",
+    ```typst
+    Normaler Text\
+    *Fetter Text*\
+    _Kursiver Text_\
+    `Monospace Text`\
+    ~Durchgestrichener Text~\
+    #text(font: "Gentium",[Andere Schriftart])\
+    #underline([Unterstrichener Text])
+    ```,
+  )
+}
+#pagebreak()
+#{
+  codeAndOutput(
+    title: "Textarten II",
+    ```typst
+    Normaler Text\
+    *Fetter Text*\
+    _Kursiver Text_\
+    `Monospace Text`\
+    ~Durchgestrichener Text~\
+    #text(font: "Gentium")[Andere Schriftart]\
+    #underline[Unterstrichener Text]
+    ```,
+  )
+}
+#pagebreak()
+#{
+  codeAndOutput(
+    title: "Textarten III",
+    ```typst
+    Normaler Text\
+    *Fetter Text*\
+    _Kursiver Text_\
+    `Monospace Text`\
+    ~Durchgestrichener Text~\
+    #text(font: "Gentium", "Andere Schriftart")\
+    #underline("Unterstrichener Text")
+    ```,
+  )
+}
+#pagebreak()
+#{
+  codeAndOutput(
+    title: "Schriftgröße",
+    ```typst
+    #let size = 3pt
+    #let sizestr = ()
+    #while size <= 64pt {
+      sizestr.push(text(size: size)[Größe: #size])
+      size = size * 1.5
+    }
+    #sizestr.join([\ ])
+    ```,
+  )
+}
+#pagebreak()
+#{
+  codeAndOutput(
+    title: "Platz machen",
+    ```typst
+    Zeile 1
+
+    Zeile 2
+
+    #v(1cm)
+    Zeile 3#h(2cm)Hat Platz
+
+    #v(-10mm)
+    Zeile 4 ist zu nah an Zeile 3
+    ```,
+  )
+}
+#pagebreak()
+#{
+  codeAndOutput(
+    title: "Farben",
+    ```typst
+    #text(fill: red)[Rot]\
+    #text(fill: teal)[Türkis]\
+    #text(fill: red.mix(blue))[Mischung]\
+    #text(fill: red.mix(blue).lighten(50%))[Mischung]\
+    #text(fill: red.mix(blue).darken(50%))[Mischung]
+    ```,
+  )
+}
+== Code-Modus
+#definition[Im Code-Modus können Befehle ohne vorangestelltes `#` verwendet werden. Außerdem markieren Anführungszeichen `"` den Anfang und das Ende eines Strings.]
+#v(1fr)
+#align(center + horizon, box(fill: luma(32), inset: 30pt, radius: 15pt, text(
+  fill: rgb(tuda_colors.at("9a")),
+  size: 52pt,
+  fatsf[
+    Live-Coding#v(-3.5cm)
+    #text(size: 87pt, fa-laptop-code(solid: true))
+  ],
+)))
+#v(1fr)
+// == Titelei
 == Installation und Nutzung
+// #context {
+//   urlslide2(
+//     caption1: "Typst Online verwenden",
+//     "https://typst.app",
+//     caption2: "Typst lokal installieren",
+//     "https://github.com/typst/typst?tab=readme-ov-file#installation",
+//   )
+// }
+#context {
+  urlslide3(
+    caption1: "Typst Online verwenden",
+    "https://typst.app",
+    caption2: "Typst lokal installieren",
+    "https://github.com/typst/typst?tab=readme-ov-file#installation",
+    caption3: "Workshop-Materialien",
+    "https://github.com/Rdeisenroth/Typst-Workshop#typst-workshop",
+  )
+}
 = Mathematische Formeln
+== der Mathe-Modus
+#definition[Matahematische Formeln werden zwischen Dollarzeichen `$...$` geschrieben. Im Mathe-Modus werden Leerzeichen ignoriert, und die Schriftart ändert sich.]
+#v(1fr)
+#align(center + horizon, box(fill: luma(32), inset: 30pt, radius: 15pt, text(
+  fill: rgb(tuda_colors.at("9a")),
+  size: 52pt,
+  fatsf[
+    Live-Coding#v(-3.5cm)
+    #text(size: 87pt, fa-laptop-code(solid: true))
+  ],
+)))
+#v(1fr)
 = Abbildungen und Tabellen
+== Abbildungen
+#definition[Matahematische Formeln werden zwischen Dollarzeichen `$...$` für Inline-Formeln und `$$...$$` für abgesetzte Formeln geschrieben. Für mehrzeilige Formeln gibt es die `align`-Umgebung.]
+#v(1fr)
+#align(center + horizon, box(fill: luma(32), inset: 30pt, radius: 15pt, text(
+  fill: rgb(tuda_colors.at("9a")),
+  size: 52pt,
+  fatsf[
+    Live-Coding#v(-3.5cm)
+    #text(size: 87pt, fa-laptop-code(solid: true))
+  ],
+)))
+#v(1fr)
 == Questions
 #align(center + horizon, text(size: 34pt)[
   Thank you for your attention!\
-  Do you have any questions?
+  Do you have any questions
+
+  #v(1fr)
+  #text(size: 87pt, fa-question(solid: true))
+  #v(1fr)
 ])
+== Kursmaterialien
+#context {
+  urlslide3(
+    caption1: "Typst Online verwenden",
+    "https://typst.app",
+    caption2: "Typst lokal installieren",
+    "https://github.com/typst/typst?tab=readme-ov-file#installation",
+    caption3: "Workshop-Materialien",
+    "https://github.com/Rdeisenroth/Typst-Workshop#typst-workshop",
+  )
+}
 #pagebreak()
 #bibliography("common/refs.bib", title: "References")

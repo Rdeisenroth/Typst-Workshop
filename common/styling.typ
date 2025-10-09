@@ -3,6 +3,8 @@
 
 #let isDarkMode() = dState.get()
 
+#let fgcolor() = if isDarkMode() { white } else { black }
+
 #let section-slide(
   title: auto,
   config: (:),
