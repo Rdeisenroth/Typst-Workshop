@@ -439,7 +439,7 @@
 }
 = Mathematische Formeln
 == der Mathe-Modus
-#definition[Matahematische Formeln werden zwischen Dollarzeichen `$...$` geschrieben. Im Mathe-Modus werden Leerzeichen ignoriert, und die Schriftart ändert sich.]
+#definition[Mathematische Formeln werden zwischen Dollarzeichen `$...$` geschrieben. Im Mathe-Modus werden Leerzeichen ignoriert, und die Schriftart ändert sich.]
 #v(1fr)
 #align(center + horizon, box(fill: luma(32), inset: 30pt, radius: 15pt, text(
   fill: rgb(tuda_colors.at("9a")),
@@ -452,7 +452,7 @@
 #v(1fr)
 = Abbildungen und Tabellen
 == Abbildungen
-#definition[Matahematische Formeln werden zwischen Dollarzeichen `$...$` für Inline-Formeln und `$$...$$` für abgesetzte Formeln geschrieben. Für mehrzeilige Formeln gibt es die `align`-Umgebung.]
+#definition[Bilder können mit dem `image`-Befehl eingebunden werden. Tabellen können mit dem `table`-Befehl erstellt werden. Beschriftungen kann man mit dem `figure`- bzw. `table`-Befehl hinzufügen.]
 #v(1fr)
 #align(center + horizon, box(fill: luma(32), inset: 30pt, radius: 15pt, text(
   fill: rgb(tuda_colors.at("9a")),
