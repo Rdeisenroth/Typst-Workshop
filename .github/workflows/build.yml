@@ -42,7 +42,8 @@ jobs:
             /usr/share/fonts/truetype/noto-emoji
             /usr/share/fonts/truetype/gentium
             /usr/share/fonts/truetype/noto-serief
-          key: fonts-v2-${{ runner.os }}
+            /usr/share/fonts/truetype/arial
+          key: fonts-v3-${{ runner.os }}
 
       # 2. install necessary fonts
       - name: Install fonts
@@ -77,6 +78,10 @@ jobs:
           unzip NotoSerif-unhinted.zip
           mkdir -p /usr/share/fonts/truetype/noto-serief
           cp NotoSerif-unhinted/*.ttf /usr/share/fonts/truetype/noto-serief
+          # Download and install Arial font
+          wget https://befonts.com/wp-content/uploads/2022/09/arial-font.zip -O arial.zip
+          mkdir -p /usr/share/fonts/truetype/arial
+          unzip arial.zip -d /usr/share/fonts/truetype/arial
           fc-cache -fv
 
       - name: Cache logo
