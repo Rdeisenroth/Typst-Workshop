@@ -70,6 +70,43 @@
       fill: rgb("#4C4C4C"), /*inset: (x: 4pt)*/
     ),
   )
+
+  let header = self => pad(left: margin.left, right: margin.right, align(top)[
+    #if self.store.enable-header {
+      v(0.39in)
+      let headerstr = ()
+      headerstr.push(self.info.short-title)
+      if (not self.store.is-section-slide) {
+        headerstr.push(utils.display-current-short-heading(level: 1))
+      }
+      // let curhd = utils.display-current-short-heading(level: 1)
+      // headerstr.push(curhd)
+      // headerstr.push(str(self.slide-level))
+      header-font(upper(headerstr.join(" / ")))
+    }
+    #place(top + right, dx: 0.34in, dy: 0.2in)[#block(height: 0.99in, self.info.logo)]
+  ])
+
+  let new-section-slide(body) = touying-slide-wrapper(self => {
+    let body = {
+      grid(
+        columns: 100%,
+        rows: (
+          4.32in - margin.top,
+          1.18in,
+          1.18in,
+        ),
+        gutter: (0in, 0.05in),
+        grid.cell([]),
+        grid.cell(align: bottom, slide-title-font(upper(utils.display-current-heading(level: 1)))),
+        grid.cell(align: top, subtitle-font([]))
+      )
+    }
+    self.store.is-section-slide = true
+    touying-slide(self: self, body)
+    self.store.is-section-slide = false
+  })
+
   show: not-tudabeamer-2023-theme.with(
     config-info(
       title: {
@@ -96,6 +133,14 @@
     config-common(
       show-notes-on-second-screen: if handout { none } else { right },
       handout: handout,
+      new-section-slide-fn: new-section-slide,
+    ),
+    config-page(
+      header: header,
+    ),
+    config-store(
+      enable-header: true,
+      is-section-slide: false,
     ),
   )
 
