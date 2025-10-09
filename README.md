@@ -25,12 +25,13 @@ You can download the latest version of the materials here:
   </a>
   <br><br>
   <b>Latest version of the Exercises</b><br>
-  <a href="https://nextcloud.dnroth.de/public.php/dav/files/todo" style="text-decoration:none;">
+  <span>TODO</span>
+  <!-- <a href="https://nextcloud.dnroth.de/public.php/dav/files/todo" style="text-decoration:none;">
     <img src="https://img.shields.io/badge/Download%20Exercises-Light%20Mode-blue?style=for-the-badge" alt="Download Exercises Light Mode" />
   </a>
   <a href="https://nextcloud.dnroth.de/public.php/dav/files/todo" style="text-decoration:none; margin-left: 10px;">
     <img src="https://img.shields.io/badge/Download%20Exercises-Dark%20Mode-black?style=for-the-badge" alt="Download Exercises Dark Mode" />
-  </a>
+  </a> -->
 </p>
 
 ## Authoren
