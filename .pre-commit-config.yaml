@@ -28,7 +28,7 @@ repos:
           "120",
         ]
   - repo: https://github.com/editorconfig-checker/editorconfig-checker.python
-    rev: "3.4.0" # pick a git hash / tag to point to
+    rev: "3.6.0" # pick a git hash / tag to point to
     hooks:
       - id: editorconfig-checker
         exclude_types: [tex]
